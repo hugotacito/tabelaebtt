@@ -19,7 +19,7 @@ export class Hello extends React.Component {
               <Formulario/>
             </Col>
             <Col xs={12} md={4}>
-              <h2>Resultado</h2>
+              <legend>Resultado</legend>
             </Col>
           </Row>
         </Grid>
