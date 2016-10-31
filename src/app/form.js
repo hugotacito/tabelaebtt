@@ -35,14 +35,11 @@ export class Formulario extends React.Component {
     if (data.formData.classe === "d3" || data.formData.classe === "d4") {
       schema.properties.nivel.enum = ["", "1", "2", "3", "4"];
       schema.properties.nivel.enumNames = ["---", "1", "2", "3", "4"];
-      console.log("2");
     }
     if (data.formData.classe === "titular") {
       schema.properties.nivel.enum = ["", "1"];
       schema.properties.nivel.enumNames = ["---", "1"];
-      console.log("3");
     }
-    console.log(data.formData);
     this.setState({key: Math.random(), formData: data.formData});
     data.formData = this.state.formData;
   }
