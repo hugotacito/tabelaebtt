@@ -1,8 +1,16 @@
 import React from 'react';
 import {Navbar, Grid, Row, Col} from 'react-bootstrap';
 import {Formulario} from './form';
-
+import {Resultado} from './resultado';
 export class Hello extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filterText: '',
+      inStockOnly: false
+    };
+  }
+
   render() {
     return (
       <div>
@@ -15,11 +23,11 @@ export class Hello extends React.Component {
         </Navbar>
         <Grid>
           <Row className="show-grid">
-            <Col xs={12} md={8}>
+            <Col xs={12} md={6}>
               <Formulario/>
             </Col>
-            <Col xs={12} md={4}>
-              <legend>Resultado</legend>
+            <Col xs={12} md={6}>
+              <Resultado/>
             </Col>
           </Row>
         </Grid>
