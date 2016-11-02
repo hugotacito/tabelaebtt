@@ -21,10 +21,7 @@ export class Formulario extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      key: Math.random(),
-      ch: "",
-      classe: "",
-      nivel: ""
+      key: Math.random()
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -42,15 +39,21 @@ export class Formulario extends React.Component {
       schema.properties.nivel.enum = ["", "1"];
       schema.properties.nivel.enumNames = ["---", "1"];
     }
-    this.setState({key: Math.random(), formData: data.formData});
-    data.formData = this.state.formData;
+    this.setState({key: Math.random()});
+    this.props.onUserInput({formData: data.formData});
+    data.formData = this.props.formData;
   }
 
   render() {
     return (
-      <Form schema={schema} key={this.state.key} formData={this.state.formData} onChange={this.handleChange}>
+      <Form schema={schema} key={this.state.key} formData={this.props.formData} onChange={this.handleChange}>
         <div></div>
       </Form>
     );
   }
 }
+
+Formulario.propTypes = {
+  onUserInput: React.PropTypes.func.isRequired,
+  formData: React.PropTypes.object.isRequired
+};

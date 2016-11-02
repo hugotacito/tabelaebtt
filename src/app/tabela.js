@@ -2,16 +2,16 @@ import React from 'react';
 import {Navbar, Grid, Row, Col} from 'react-bootstrap';
 import {Formulario} from './form';
 import {Resultado} from './resultado';
-export class Hello extends React.Component {
+export class Tabela extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      filterText: {}
+      formData: {}
     };
     this.handleUserInput = this.handleUserInput.bind(this);
   }
-  handleUserInput(formData) {
-    this.setState({formData});
+  handleUserInput(data) {
+    this.setState({formData: data.formData});
   }
   render() {
     return (
