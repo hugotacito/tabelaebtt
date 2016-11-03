@@ -8,14 +8,12 @@ const schema = {
   required: ["ano", "ch", "classe", "nivel", "titulacao"],
   properties: {
     ano: {type: "string", title: "Estrutura de Vencimento Básico do EBTT", enum: ["", "2016.2", "2017.1", "2018.1", "2019.1"], enumNames: ["---", "Agosto de 2016", "Janeiro de 2017", "Janeiro de 2018", "Janeiro de 2019"]},
-    ch: {type: "string", title: "Regime de Trabalho", enum: ["", "20", "40", "exclusivo"], enumNames: ["---", "20 horas", "40 horas", "Dedicação exclusiva"]},
-    classe: {type: "string", title: "Classe", enum: ["", "d1", "d2", "d3", "d4", "titular"], enumNames: ["---", "D I", "D II", "D III", "D IV", "Titular"]},
+    ch: {type: "string", title: "Regime de Trabalho", enum: ["", "0", "1", "2"], enumNames: ["---", "20 horas", "40 horas", "Dedicação exclusiva"]},
+    classe: {type: "string", title: "Classe", enum: ["", 0, 2, 4, 8, 12], enumNames: ["---", "D I", "D II", "D III", "D IV", "Titular"]},
     nivel: {type: "string", title: "Nível", enum: [""], enumNames: ["---"]},
-    titulacao: {type: "string", title: "Titulação", enum: ["", "grad", "aperf", "espec", "mestrado", "doutorado"], enumNames: ["---", "Graduação", "Aperfeiçoamento", "Especialização ou RSC-I", "Mestrado ou RSC-II", "Doutorado ou RSC-III"]}
+    titulacao: {type: "string", title: "Titulação", enum: ["", "graduacao", "aperfeicoamento", "especializacao", "mestrado", "doutorado"], enumNames: ["---", "Graduação", "Aperfeiçoamento", "Especialização ou RSC-I", "Mestrado ou RSC-II", "Doutorado ou RSC-III"]}
   }
 };
-
-// const log = type => console.log.bind(console, type);
 
 export class Formulario extends React.Component {
   constructor(props) {
@@ -27,17 +25,17 @@ export class Formulario extends React.Component {
   }
 
   handleChange(data) {
-    if (data.formData.classe === "d1" || data.formData.classe === "d2") {
-      schema.properties.nivel.enum = ["", "1", "2"];
-      schema.properties.nivel.enumNames = ["---", "1", "2"];
+    if (data.formData.classe === "0" || data.formData.classe === "2") {
+      schema.properties.nivel.enum = ["", 0, 1];
+      schema.properties.nivel.enumNames = ["---", 1, 2];
     }
-    if (data.formData.classe === "d3" || data.formData.classe === "d4") {
-      schema.properties.nivel.enum = ["", "1", "2", "3", "4"];
-      schema.properties.nivel.enumNames = ["---", "1", "2", "3", "4"];
+    if (data.formData.classe === "4" || data.formData.classe === "8") {
+      schema.properties.nivel.enum = ["", 0, 1, 2, 3];
+      schema.properties.nivel.enumNames = ["---", 1, 2, 3, 4];
     }
-    if (data.formData.classe === "titular") {
-      schema.properties.nivel.enum = ["", "1"];
-      schema.properties.nivel.enumNames = ["---", "1"];
+    if (data.formData.classe === "12") {
+      schema.properties.nivel.enum = ["", 0];
+      schema.properties.nivel.enumNames = ["---", 1];
     }
     this.setState({key: Math.random()});
     this.props.onUserInput({formData: data.formData});
