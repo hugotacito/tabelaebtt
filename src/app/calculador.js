@@ -57,15 +57,20 @@ const PROPRIEDADES = {
 };
 
 export function calcular(field, data) {
-  const cVencimentoBasico = vencimentoBasico(data);
-  const cIncentivoQualificacao = incentivoQualificacao(data);
+  if (field === 'salario_bruto') {
+    return salarioBruto(data);
+  }
   if (field === 'vencimento_basico') {
-    return cVencimentoBasico;
+    return vencimentoBasico(data);
   }
   if (field === 'incentivo_qualificacao') {
-    return cIncentivoQualificacao;
+    return incentivoQualificacao(data);
   }
-  return 'error';
+  return 0;
+}
+
+function salarioBruto(data) {
+  return vencimentoBasico(data) + incentivoQualificacao(data);
 }
 
 function vencimentoBasico(data) {

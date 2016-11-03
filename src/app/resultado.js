@@ -10,7 +10,11 @@ class ResultadoLinha extends React.Component {
     const data = this.props.formData;
 
     if (data.ch && data.ano && data.classe && data.nivel && data.titulacao) {
-      value = parseFloat(calcular(this.props.id, this.props.formData)).toFixed(2).replace('.', ',');
+      let valor = calcular(this.props.id, this.props.formData);
+      if (isNaN(valor)) {
+        valor = 0;
+      }
+      value = parseFloat(valor).toFixed(2).replace('.', ',');
     } else {
       value = '0,00';
     }
