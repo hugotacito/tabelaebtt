@@ -19,7 +19,7 @@ export class Tabela extends React.Component {
         <Navbar>
           <Navbar.Header>
             <Navbar.Brand>
-              <a href="#">Tabela EBTT</a>
+              <a href="#">Simulador EBTT</a>
             </Navbar.Brand>
           </Navbar.Header>
         </Navbar>

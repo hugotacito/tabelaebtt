@@ -7,7 +7,7 @@ const schema = {
   type: "object",
   required: ["ano", "ch", "classe", "nivel", "titulacao"],
   properties: {
-    ano: {type: "string", title: "Estrutura de Vencimento Básico do EBTT", enum: ["", "2016.2", "2017.1", "2018.1", "2019.1"], enumNames: ["---", "Agosto de 2016", "Janeiro de 2017", "Janeiro de 2018", "Janeiro de 2019"]},
+    ano: {type: "string", title: "Estrutura de Vencimento Básico do EBTT", enum: ["", "2017.1", "2018.1", "2019.1"], enumNames: ["---", "Janeiro de 2017", "Janeiro de 2018", "Janeiro de 2019"]},
     ch: {type: "string", title: "Regime de Trabalho", enum: ["", "0", "1", "2"], enumNames: ["---", "20 horas", "40 horas", "Dedicação exclusiva"]},
     classe: {type: "string", title: "Classe", enum: ["", 0, 2, 4, 8, 12], enumNames: ["---", "D I", "D II", "D III", "D IV", "Titular"]},
     nivel: {type: "string", title: "Nível", enum: [""], enumNames: ["---"]},
